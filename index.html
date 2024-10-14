@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
+    <title>AfterSchool</title>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>AfterSchool</h1>
+            <nav>
+                <button @click="showSection('home')">Home</button>
+                <button @click="showSection('lessons')">Lessons</button>
+                <button @click="showSection('how-it-works')">How It Works</button>
+                <button @click="showSection('contact')">Contact</button>
+            </nav>
+        </header>
+        <main>
+            <!--HOME-->
+            <section id="home" v-if="activeSection === 'home'">
+                <h1>Welcome to AfterSchool</h1>
+                <p>Discover and book exciting after-school lessons and activities for 
+                    students of all ages, all in one convenient platform.</p>
+            </section>
+
+            <!--Lessons-->
+            <section id="lessons" v-if="activeSection === 'lessons'">
+                <h2>Available Lessons</h2>
+                <ul>
+                    <li v-for="lessonItem in lessons" :key="lessonItem.name">
+                        <h3>{{ lessonItem.name }}</h3>
+                        <p>{{ lessonItem.description }}</p>
+                    </li>
+                </ul>
+            </section>
+
+            <!--How it works-->
+            <section id="how-it-works" v-if="activeSection === 'how-it-works'">
+                <h2>How It Works</h2>
+                <ol>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+            </section>
+
+            <!--Contact-->
+            <section id="contact" v-if="activeSection === 'contact'">
+                <h2>Contact Us</h2>
+                <p>For any further enquiries and questions, 
+                    please reach out to us at mail@afterschool.com</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 AfterSchool. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        let webstore = new Vue ({
+    el:"#app",
+    data: {
+        activeSection: 'home', //default page 
+        lessons: [
+            { name: 'Mathematics', description: '' },
+            { name: 'English', description: '' },
+            { name: 'Coding for Beginners', description: '' },
+            { name: 'Music', description: '' },
+            { name: 'Creative Arts', description: '' },
+            { name: 'Physical Education', description: '' },
+            { name: 'Dance', description: '' },
+            { name: 'Drama', description: '' },
+            { name: 'Chess', description: '' },
+            { name: 'Entrepreneurship', description: '' }
+        ]
+    },
+    methods: {
+        showSection(section){
+            this.activeSection = section;
+        }
+    }
+});
+    </script>
+</body>
+</html>
